@@ -1,0 +1,183 @@
+<html>
+  <style>
+    @page {
+      size: landscape;
+    }
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+      }
+    }
+    *,
+    :after,
+    :before {
+      border: 0 solid #232323;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Poppins Regular, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #232323;
+      font-weight: 400;
+      line-height: 1.5;
+      background-color: #fff;
+      overflow: auto;
+      max-width: 1024px;
+      margin: 24px auto;
+    }
+    .heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 6px 16px;
+      transition: 0.3s;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+    form label {
+      display: block;
+      margin-bottom: 4px;
+    }
+    input[type="text"] {
+      height: 28px;
+      width: 230px;
+      font-size: 14px;
+      border: 1px solid black;
+      border-right: 0;
+      padding: 4px 16px;
+      border-top-left-radius: 1000px;
+      border-bottom-left-radius: 1000px;
+    }
+    input[type="text"]:focus {
+      outline: none;
+    }
+    input[type="text"]::placeholder {
+      font-size: 12px;
+    }
+    input[type="submit"] {
+      height: 28px;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-top-right-radius: 1000px;
+      border-bottom-right-radius: 1000px;
+      background-color: rgba(197, 242, 231, 1);
+      border: 1px solid rgba(197, 242, 231, 1);
+      margin-left: -4px;
+    }
+    .create-btn {
+      height: 28px;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 1000px;
+      background-color: rgba(197, 242, 231, 1);
+      border: 1px solid rgba(197, 242, 231, 1);
+      margin-block-end: 1em;
+    }
+    table {
+      border-collapse: collapse;
+      border-color: inherit;
+      text-indent: 0;
+      width: 100%;
+      border: 1px solid #232323;
+    }
+    thead {
+      --tw-bg-opacity: 1;
+      background-color: rgba(197, 242, 231, 1);
+    }
+    th,
+    td {
+      padding: 0.4rem;
+      font-size: 12px;
+      border: 1px solid #707070;
+      white-space: nowrap;
+      text-align: center;
+    }
+    td {
+      --tw-text-opacity: 1;
+      color: rgba(35, 35, 35, 1);
+      opacity: 0.9;
+      vertical-align: top;
+      text-align: center;
+    }
+    tr {
+      page-break-inside: avoid;
+    }
+  </style>
+
+  <body>
+    <button onclick="location.href='/logout';">Log out</button>
+    <h3>Account List</h3>
+    <div class="heading">
+      <form action="">
+        <!-- <input type="radio" id="html" name="fav_language" value="HTML"> -->
+        <label for="search">Keyword Search</label>
+        <input
+          type="text"
+          name="search"
+          id="search"
+          value="{{ search }}"
+          placeholder="Enter keyword and press the Enter"
+        />
+        <input type="submit" value="Submit" />
+      </form>
+      <button onclick="location.href='/accounts/add';" class="create-btn">Create new account</button>
+    </div>
+    <div class="tab">
+      <button class="tablinks active">Accounts</button>
+      <button onclick="location.href='/books';" class="tablinks">Books</button>
+      <button onclick="location.href='/borrows';" class="tablinks">Borrows</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th class="whitespace-nowrap">ID</th>
+          <th class="whitespace-nowrap">Username</th>
+          <th class="whitespace-nowrap">Name</th>
+          <th class="whitespace-nowrap">Is Active</th>
+          <th class="whitespace-nowrap">Created</th>
+          <th class="whitespace-nowrap">Edit</th>
+          <th class="whitespace-nowrap">Delete</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        {% for item in accounts %}
+        <tr class="text-center">
+          <td rowspan="1" class="align-top">{{ item.id }}</td>
+          <td rowspan="1" class="align-top">{{ item.username }}</td>
+          <td rowspan="1" class="align-top">{{ item.name }}</td>
+          <td rowspan="1" class="align-top">{{ item.is_active }}</td>
+          <td rowspan="1" class="align-top">{{ item.created }}</td>
+          <td rowspan="1" class="align-top">
+            <button onclick="location.href='/accounts/{{item.id}}/edit';">Edit</button>
+          </td>
+          <td rowspan="1" class="align-top">
+            <button onclick="location.href='/accounts/{{item.id}}/delete';">Delete</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

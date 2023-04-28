@@ -1,0 +1,20 @@
+# Python-related files
+*.pyc
+__pycache__/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Data-related files
+data/raw/
+data/processed/
+
+# Log files
+logs/
+
+# Miscellaneous files
+.DS_Store
+.idea/
+
+.env
