@@ -39,3 +39,5 @@ flask run
 ## Chú ý
 - Lần đầu khởi tạo, hệ thống sẽ sinh ra file "sql.db" để làm database dự án
 - Để tạo lại database, ta chỉ cần xóa file "sql.db" rồi restart lại server
+- Thông tin đăng nhập thủ thư: admin/admin
+- Thông tin đăng nhập user: a/1

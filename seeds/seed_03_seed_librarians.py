@@ -1,7 +1,7 @@
 from objects.users import AccountManager, LibrarianManager
 
 SEED_DATA = {
-    "a": "1",
+    "admin": "admin",
 }
 
 

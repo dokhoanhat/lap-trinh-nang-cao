@@ -2,6 +2,7 @@ from objects.users import AccountManager
 import random
 
 SEED_DATA = {
+    "admin": "admin",
     "a": "1",
     "b": "2",
     "c": "3",
